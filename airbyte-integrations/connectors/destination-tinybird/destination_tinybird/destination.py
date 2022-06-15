@@ -28,7 +28,7 @@ class DestinationTinybird(Destination):
             'token': api_token,
         }
 
-        url = api_url + hfi_endpoint
+        url = api_url + events_endpoint
 
         for message in input_messages:
             if message.type == Type.RECORD:
