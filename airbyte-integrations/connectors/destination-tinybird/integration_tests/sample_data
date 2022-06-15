@@ -1,0 +1,1 @@
+{"type": "RECORD", "record": {"stream": "ab-airbyte-testing", "data": {"test":"test"}, "emitted_at": 1633881878000}}

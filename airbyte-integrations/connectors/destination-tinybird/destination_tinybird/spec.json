@@ -1,0 +1,47 @@
+{
+  "documentationUrl": "https://docs.airbyte.io/integrations/destinations/tinybird",
+  "supported_destination_sync_modes": [
+    "append"
+  ],
+  "supportsIncremental": true,
+  "supportsDBT": false,
+  "supportsNormalization": false,
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Destination Tinybird",
+    "type": "object",
+    "required": [
+      "api_token",
+      "api_url",
+      "datasource_name"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "datasource_name": {
+        "title": "Data Source Name",
+        "description": "The name of your Tinybird data source",
+        "type": "string",
+        "examples": [
+          "my-data-source"
+        ],
+        "order": 0
+      },
+      "api_url": {
+        "title": "API URL",
+        "description": "Your Tinybird API URL, see https://www.tinybird.co/guide/high-frequency-ingestion",
+        "type": "string",
+        "enum": [
+          "https://api.tinybird.co/",
+          "https://api.us-east.tinybird.co/"
+        ],
+        "order": 1
+      },
+      "api_token": {
+        "title": "API Token",
+        "description": "Your Tinybird API Token, see https://docs.tinybird.co/api-reference/token-api.html",
+        "type": "string",
+        "order": 2
+      }
+    }
+  }
+}

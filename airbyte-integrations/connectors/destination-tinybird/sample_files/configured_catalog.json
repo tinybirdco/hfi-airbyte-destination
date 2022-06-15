@@ -1,0 +1,23 @@
+{
+    "streams": [
+        {
+            "sync_mode": "full_refresh",
+            "destination_sync_mode": "append",
+            "stream": {
+                "name": "tinybird-airbyte-testing",
+                "supported_sync_modes": [
+                    "full_refresh"
+                ],
+                "source_defined_cursor": false,
+                "json_schema": {
+                    "type": "object",
+                    "properties": {
+                        "test": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
