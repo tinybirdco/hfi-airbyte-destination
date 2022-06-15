@@ -21,7 +21,7 @@ class DestinationTinybird(Destination):
         api_url = config['api_url']
         api_token = config['api_token']
 
-        hfi_endpoint = 'v0/events'
+        events_endpoint = 'v0/events'
 
         params = {
             'name': datasource_name,
