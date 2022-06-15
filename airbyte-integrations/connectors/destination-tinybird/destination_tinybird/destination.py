@@ -28,7 +28,6 @@ class DestinationTinybird(Destination):
             'token': api_token,
         }
 
-        # TODO: change the spec to use an enum for API URL, remove the need for this check, always append
         url = api_url + hfi_endpoint
 
         for message in input_messages:
