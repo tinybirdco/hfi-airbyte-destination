@@ -20,6 +20,8 @@ class DestinationTinybird(Destination):
         datasource_name = config['datasource_name']
         api_url = config['api_url']
         api_token = config['api_token']
+        max_line_buffer_size = config.get('buffer_size', 32)
+
 
         events_endpoint = 'v0/events'
 
@@ -30,12 +32,18 @@ class DestinationTinybird(Destination):
 
         url = api_url + events_endpoint
 
+        msg_buffer = []
+
         for message in input_messages:
             if message.type == Type.RECORD:
-                record = json.dumps(message.record.data)
-                r = requests.post(url, params=params, data=record)
+                record = msg_buffer.append(json.dumps(message.record.data))
+                if(len(msg_buffer) >= max_line_buffer_size):
+                    r = requests.post(url, params=params, data='\n'.join(msg_buffer))
             elif message.type == Type.STATE:
                 yield message
+
+        if(len(msg_buffer) > 0):
+            r = requests.post(url, params=params, data='\n'.join(msg_buffer))
 
     def check(self, logger: AirbyteLogger, config: Mapping[str, Any]) -> AirbyteConnectionStatus:
 
