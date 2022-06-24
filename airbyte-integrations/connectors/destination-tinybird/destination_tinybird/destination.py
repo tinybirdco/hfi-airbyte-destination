@@ -36,7 +36,7 @@ class DestinationTinybird(Destination):
 
         for message in input_messages:
             if message.type == Type.RECORD:
-                record = msg_buffer.append(json.dumps(message.record.data))
+                msg_buffer.append(json.dumps(message.record.data))
                 if(len(msg_buffer) >= max_line_buffer_size):
                     r = requests.post(url, params=params, data='\n'.join(msg_buffer))
             elif message.type == Type.STATE:
